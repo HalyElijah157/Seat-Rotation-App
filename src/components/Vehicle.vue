@@ -1,5 +1,5 @@
 <script setup>
-    import Seat from './components/Seat.vue'
+    import Seat from './Seat.vue'
 </script>
 
 <template>
@@ -10,14 +10,17 @@
         <Seat />
         <Seat />
         <Seat />
+        <Seat />
+        <Seat />
     </div>
 </template>
 
 <style scoped>
-    .SeatParent {
+    .seatParent {
+        /* display: flex; */
         display: grid;
-        grid-template-columns: 100px 50px 100px;
-        grid-template-rows: 80px auto 80px; 
+        grid-template-columns: [c1] auto [column2] auto [column3] auto [end];
+        grid-template-rows: [row1] auto [row2] auto [row3] auto [end];
         column-gap: 10px;
         row-gap: 15px;
     }
