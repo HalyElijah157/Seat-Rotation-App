@@ -1,17 +1,13 @@
 <script setup>
     import Seat from './Seat.vue'
+    const names=[
+        'Elijah', 'Hannah', 'saige', 'lilli'
+    ]
 </script>
 
 <template>
     <div class="seatParent">
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <Seat v-for="name in names" :name="name"/>
     </div>
 </template>
 
