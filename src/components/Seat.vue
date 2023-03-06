@@ -1,11 +1,11 @@
 <script setup>
-    const props = defineProps(['name'])
+    const props = defineProps(['person'])
 </script>
 
 <template>
     <div class="container">
         <img src="carSeat.png" class="seat">
-        <div class="centered">{{ props.name }}</div>
+        <div class="centered">{{ props.person.name }}</div>
     </div>
 </template>
 
