@@ -39,6 +39,18 @@
         {
             driver: false,
             bosterSeat: false
+        },
+        {
+            driver: true,
+            bosterSeat: false,
+        },
+        {
+            driver: false,
+            bosterSeat: false
+        },
+        {
+            driver: false,
+            bosterSeat: false
         }
     ]
 
