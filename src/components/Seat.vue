@@ -1,11 +1,13 @@
 <script setup>
-    const props = defineProps(['person'])
+    const props = defineProps(['seat'])
 </script>
 
 <template>
     <div class="container">
         <img src="carSeat.png" class="seat">
-        <div class="centered">{{ props.person.name }}</div>
+        <div class="centered">{{ props.seat.passenger.name }}</div>
+        <div v-if="props.seat.driver" class="underline">Driver</div>
+        <div v-if="props.seat.booster" class="underline">Booster</div>
     </div>
 </template>
 
@@ -17,7 +19,13 @@
     }
     .centered {
         position: absolute;
-        top: 50%;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .underline {
+        position: absolute;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
     }

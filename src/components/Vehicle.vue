@@ -8,55 +8,58 @@
         {
             name: 'Elijah',
             driver: true,
-            bosterSeat: false,
+            booster: false,
         },
         {
             name: 'Hannah',
             driver: false,
-            bosterSeat: false,
+            booster: false,
         },
         {
             name: 'Saige',
             driver: false,
-            bosterSeat: false,
+            booster: false,
         },
         {
             name: 'Lilli',
             driver: false,
-            bosterSeat: false,
+            booster: true,
         }
     ]
 
     const seats=[
         {
+            driver: false,
+            booster: false,
+        },
+        {
+            driver: false,
+            booster: false
+        },
+        {
+            driver: false,
+            booster: true
+        },
+        {
             driver: true,
-            bosterSeat: false,
+            booster: false,
         },
         {
             driver: false,
-            bosterSeat: false
+            booster: false
         },
         {
             driver: false,
-            bosterSeat: false
-        },
-        {
-            driver: true,
-            bosterSeat: false,
-        },
-        {
-            driver: false,
-            bosterSeat: false
-        },
-        {
-            driver: false,
-            bosterSeat: false
+            booster: false
         }
     ]
 
     const randamize = () => {
-        for (let seat of seats) {
-            seat.passenger={name: 'Elijah'} 
+        for (let person of people) {
+            for (let seat of seats) {
+                seat.passenger=person
+            }
+            //only one person per seat
             //only aplise passenger if the person meets aqwierments
         }
     }
@@ -69,7 +72,7 @@
     <div class="seatParent">
         <!-- <Seat v-for="name in names" :name="name"/> -->
         <!-- <Seat v-for="person in people" :person="person"/> -->
-        <Seat v-for="seat in seats" :person="seat.passenger"/>
+        <Seat v-for="seat in seats" :seat="seat"/>
     </div>
 </template>
 
