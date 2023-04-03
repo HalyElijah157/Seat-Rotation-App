@@ -5,7 +5,8 @@
 <template>
     <div class="container">
         <img src="carSeat.png" class="seat">
-        <div class="centered">{{ props.seat.passenger.name }}</div>
+        <div v-if="props.seat.passenger" class="centered">{{ props.seat.passenger.name }}</div>
+        <div v-else class="centered">none</div>
         <div v-if="props.seat.driver" class="underline">Driver</div>
         <div v-if="props.seat.booster" class="underline">Booster</div>
     </div>
