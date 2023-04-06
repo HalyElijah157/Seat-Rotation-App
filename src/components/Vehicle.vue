@@ -6,12 +6,12 @@
 
     const people=[
         {
-            name: 'adam',
+            name: 'Adam',
             driver: true,
             booster: false,
         },
         {
-            name: 'jeniffer',
+            name: 'Jennifer',
             driver: true,
             booster: false,
         },
@@ -22,6 +22,7 @@
         },
         {
             name: 'Hannah',
+            driver: false,
             booster: false,
         },
         {
@@ -63,36 +64,32 @@
         }
     ]
 
+        //actually randomize postions
+
     const randamize = () => {
-        const driverindex=seats.findIndex(seat=>{
+        const driverSeatIndex=seats.findIndex(seat=>{
             return seat.driver && seat.driver===true
         })
-        const drivers= people.filter(person=>{
-        return person.driver && person.driver===true
+        const drivers = people.filter(person=>{
+            return person.driver && person.driver===true
         })
-        console.log(seats[driverindex])
+        const randomDriverindex = Math.floor(Math.random() * drivers.length)
+        seats[driverSeatIndex].passenger=drivers[randomDriverindex]
+        const passengers = people.filter(person=>{
+            return drivers[randomDriverindex].name !== person.name
+        })
         console.log(drivers)
-        for (let person of people) {
+        for (let person of passengers) {
             for (let seat of seats) {
                 if (seat.passenger){
                     continue
-                }
-                
-                
-                
-                if (person.driver && seat.driver) {
-                    console.log ('person and seat are driver', person, seat)
-                    seat.passenger=person
-                    break
                 }else if(person.booster && seat.booster){
                     seat.passenger=person
-                }else if(!person.booster && !person.driver && !seat.booster && !seat.driver){
+                }else if(!person.booster && !seat.booster){
                     seat.passenger=person
                     break
                 }
             }
-            //only one person per seat
-            //only aplise passenger if the person meets aqwierments
         }
     }
 
