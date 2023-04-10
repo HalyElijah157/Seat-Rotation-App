@@ -33,7 +33,7 @@
         {
             name: 'Lilli',
             driver: false,
-            booster: true,
+            booster: false,
         }
     ]
 
@@ -44,7 +44,7 @@
         },
         {
             driver: false,
-            booster: true
+            booster: false
         },
         {
             driver: false,
@@ -73,23 +73,69 @@
         const drivers = people.filter(person=>{
             return person.driver && person.driver===true
         })
+
+        // const boosterSeatIndex=seats.findIndex(seat=>{
+        //     return seat.driver && seat.driver===true
+        // })
+        // const bosster = people.filter(person=>{
+        //     return person.driver && person.driver===true
+        // })
+
+        // const passengerSeatIndex=seats.findIndex(seat=>{
+        //     return seat.driver && seat.driver===true
+        // })
+        // const passenger = people.filter(person=>{
+        //     return person.driver && person.driver===true
+        // })
+
         const randomDriverindex = Math.floor(Math.random() * drivers.length)
+        // const randomBoosterindex = Math.floor(Math.random() * booster.length)
+        // const randomPassingerindex = Math.floor(Math.random() * passenger.length)
+
         seats[driverSeatIndex].passenger=drivers[randomDriverindex]
+        drivers[randomDriverindex].seated=true
         const passengers = people.filter(person=>{
             return drivers[randomDriverindex].name !== person.name
         })
+
+        // seats[boosterSeatIndex].passenger=drivers[randomBoosterindex]
+        // const boosterSeatPassengers = people.filter(person=>{
+        //     return drivers[randomBoosterindex].name !== person.name
+        // })
+
+        // seats[passengerSeatIndex].passenger=drivers[randomPassingerindex]
+        // const passengers = people.filter(person=>{
+        //     return drivers[randomPassingerindex].name !== person.name
+        // })
+
+        // undrstand bug then fix
+
         console.log(drivers)
         for (let person of passengers) {
-            for (let seat of seats) {
-                if (seat.passenger){
+            let count = 0
+            while (!person.seated){
+                const randomIndex = Math.floor(Math.random() * seats.length)
+                const seat = seats[randomIndex]
+                count++
+                if(seat.passenger === true){
                     continue
-                }else if(person.booster && seat.booster){
-                    seat.passenger=person
-                }else if(!person.booster && !seat.booster){
-                    seat.passenger=person
+                }
+                seats[randomIndex].passenger=person
+                person.seated=true
+                if (count > 10){
                     break
                 }
             }
+            // for (let seat of seats) {
+                // if (seat.passenger){
+                //     continue
+                // }else if(person.booster && seat.booster){
+                //     seat.passenger=person
+                // }else if(!person.booster && !seat.booster){
+                //     seat.passenger=person
+                //     break
+                // }
+            // }
         }
     }
 
