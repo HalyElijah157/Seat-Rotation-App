@@ -1,8 +1,5 @@
 <script setup>
     import Seat from './Seat.vue'
-    // const names=[
-    //     'Elijah', 'Hannah', 'saige', 'lilli'
-    // ]
 
     const people=[
         {
@@ -64,8 +61,6 @@
         }
     ]
 
-        //actually randomize postions
-
     const randamize = () => {
         const driverSeatIndex=seats.findIndex(seat=>{
             return seat.driver && seat.driver===true
@@ -74,23 +69,7 @@
             return person.driver && person.driver===true
         })
 
-        // const boosterSeatIndex=seats.findIndex(seat=>{
-        //     return seat.driver && seat.driver===true
-        // })
-        // const bosster = people.filter(person=>{
-        //     return person.driver && person.driver===true
-        // })
-
-        // const passengerSeatIndex=seats.findIndex(seat=>{
-        //     return seat.driver && seat.driver===true
-        // })
-        // const passenger = people.filter(person=>{
-        //     return person.driver && person.driver===true
-        // })
-
         const randomDriverindex = Math.floor(Math.random() * drivers.length)
-        // const randomBoosterindex = Math.floor(Math.random() * booster.length)
-        // const randomPassingerindex = Math.floor(Math.random() * passenger.length)
 
         seats[driverSeatIndex].passenger=drivers[randomDriverindex]
         drivers[randomDriverindex].seated=true
@@ -98,62 +77,37 @@
             return drivers[randomDriverindex].name !== person.name
         })
 
-        // seats[boosterSeatIndex].passenger=drivers[randomBoosterindex]
-        // const boosterSeatPassengers = people.filter(person=>{
-        //     return drivers[randomBoosterindex].name !== person.name
-        // })
-
-        // seats[passengerSeatIndex].passenger=drivers[randomPassingerindex]
-        // const passengers = people.filter(person=>{
-        //     return drivers[randomPassingerindex].name !== person.name
-        // })
-
-        // undrstand bug then fix
-
-        console.log(drivers)
         for (let person of passengers) {
             let count = 0
             while (!person.seated){
                 const randomIndex = Math.floor(Math.random() * seats.length)
                 const seat = seats[randomIndex]
                 count++
-                if(seat.passenger === true){
+                if(seat.passenger){
                     continue
                 }
+                console.log('person',JSON.stringify(person,null,2))
+                console.log('seats',JSON.stringify(seats[randomIndex],null,2))
                 seats[randomIndex].passenger=person
                 person.seated=true
                 if (count > 10){
                     break
                 }
             }
-            // for (let seat of seats) {
-                // if (seat.passenger){
-                //     continue
-                // }else if(person.booster && seat.booster){
-                //     seat.passenger=person
-                // }else if(!person.booster && !seat.booster){
-                //     seat.passenger=person
-                //     break
-                // }
-            // }
         }
     }
 
     randamize()
-    console.log(seats)
 </script>
 
 <template>
     <div class="seatParent">
-        <!-- <Seat v-for="name in names" :name="name"/> -->
-        <!-- <Seat v-for="person in people" :person="person"/> -->
         <Seat v-for="seat in seats" :seat="seat"/>
     </div>
 </template>
 
 <style scoped>
     .seatParent {
-        /* display: flex; */
         display: grid;
         grid-template-columns: [c1] auto [column2] auto [column3] auto [end];
         grid-template-rows: [row1] auto [row2] auto [row3] auto [end];
