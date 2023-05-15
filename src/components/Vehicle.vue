@@ -97,13 +97,27 @@
         }
     }
 
-    randamize()
+    const dropdowntest = () => {
+        const x = document.getElementById('myul')
+        console.log(x.value)
+    }
 </script>
 
 <template>
     <div class="seatParent">
         <Seat v-for="seat in seats" :seat="seat"/>
     </div>
+
+    <ul id="myul">
+        <li value="dad">Adam</li>
+        <li value="mom">Jennifer</li>
+        <li value="brother">Elijah</li>
+        <li value="sisterOne">Hannah</li>
+        <li value="sisterTwo">Saige</li>
+        <li value="sisterThree">Lilli</li>
+    </ul>
+
+    <button type="button" id="mybtn" @click="randamize">button</button>
 </template>
 
 <style scoped>
