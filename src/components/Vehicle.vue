@@ -34,6 +34,11 @@
         }
     ]
 
+    function addPeople() {
+        var names = document.getElementById("myText").value;
+        console.log(names)
+    }
+
     const seats=[
         {
             driver: false,
@@ -116,6 +121,10 @@
         <li value="sisterTwo">Saige</li>
         <li value="sisterThree">Lilli</li>
     </ul>
+
+    <input type="text" id="peopleTextBox" value="Add People">
+
+    <button onclick="addPeople()">add people</button>
 
     <button type="button" id="mybtn" @click="randamize">button</button>
 </template>
